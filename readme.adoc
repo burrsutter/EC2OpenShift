@@ -29,4 +29,5 @@ source 2_createSecurityGroup.sh
 
 ./3_createKeyPair.sh
 
+
 source 4_runInstances.sh
