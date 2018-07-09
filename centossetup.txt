@@ -23,3 +23,4 @@ runcmd:
   - htpasswd -b /var/lib/origin/openshift.local.config/users.htpasswd developer devpassword
   - oc cluster up --use-existing-config=true
   - oc adm policy add-cluster-role-to-user cluster-admin admin --config /var/lib/origin/openshift.local.config/master/admin.kubeconfig
+  - touch /home/centos/done
