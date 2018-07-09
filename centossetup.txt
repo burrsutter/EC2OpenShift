@@ -11,14 +11,14 @@ runcmd:
   - usermod -aG docker centos
   - service docker start
   - wget https://github.com/openshift/origin/releases/download/v3.9.0/openshift-origin-server-v3.9.0-191fece-linux-64bit.tar.gz
+  - wget https://raw.githubusercontent.com/burrsutter/EC2OpenShift/master/patch.diff
   - tar -xzf openshift-origin-server-v3.9.0-191fece-linux-64bit.tar.gz
   - cd openshift-origin-server-v3.9.0-191fece-linux-64bit
   - cp oc /usr/local/bin/
   - export PATH=$HOME/openshift-origin-server-v3.9.0-191fece-linux-64bit:$PATH
   - oc cluster up --routing-suffix=$(curl http://169.254.169.254/latest/meta-data/public-ipv4).nip.io --public-hostname=$(curl http://169.254.169.254/latest/meta-data/public-ipv4).nip.io
   - oc cluster down
-  - wget https://raw.githubusercontent.com/burrsutter/EC2OpenShift/master/patch.diff
-  - patch -i /home/centos/patch.diff /var/lib/origin/openshift.local.config/master/master-config.yaml
+  - patch -i /patch.diff /var/lib/origin/openshift.local.config/master/master-config.yaml
   - htpasswd -c -b /var/lib/origin/openshift.local.config/users.htpasswd admin adminpassword
   - htpasswd -b /var/lib/origin/openshift.local.config/users.htpasswd developer devpassword
   - oc cluster up --use-existing-config=true
