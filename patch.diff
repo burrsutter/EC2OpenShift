@@ -14,3 +14,4 @@
 +      kind: HTPasswdPasswordIdentityProvider
 +      file: users.htpasswd
    masterCA: ca-bundle.crt
+   
