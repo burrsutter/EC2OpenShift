@@ -2,7 +2,7 @@
 runcmd:
   - yum update -y
   - yum upgrade -y
-  - yum install -y wget docker git httpd-tools
+  - yum install -y wget docker git httpd-tools patch
   - mkdir -p /etc/rhsm/ca/
   - touch /etc/rhsm/ca/redhat-uep.pem
   - sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16"' /etc/sysconfig/docker
@@ -19,8 +19,8 @@ runcmd:
   - cd /home/centos
   - wget https://raw.githubusercontent.com/burrsutter/EC2OpenShift/master/patch.diff
   - patch -i /home/centos/patch.diff /home/centos/openshift.config/master/master-config.yaml
-  - htpasswd -c -b /home/centos/openshift.config/users.htpasswd developer devpassword
   - htpasswd -c -b /home/centos/openshift.config/users.htpasswd admin adminpassword
+  - htpasswd -b /home/centos/openshift.config/users.htpasswd developer devpassword
   - oc cluster down
   - oc cluster up --host-config-dir='/home/centos/openshift.config' --routing-suffix=$(curl http://169.254.169.254/latest/meta-data/public-ipv4).nip.io --public-hostname=$(curl http://169.254.169.254/latest/meta-data/public-ipv4).nip.io --use-existing-config=true
   - oc adm policy add-cluster-role-to-user cluster-admin admin --config /home/centos/openshift.config/master/admin.kubeconfig

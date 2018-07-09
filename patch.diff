@@ -12,7 +12,7 @@
        apiVersion: v1
 -      kind: AllowAllPasswordIdentityProvider
 +      kind: HTPasswdPasswordIdentityProvider
-+      file: users.htpasswd
++      file: /home/centos/openshift.config/users.htpasswd
    masterCA: ca-bundle.crt
    masterPublicURL: https://127.0.0.1:8443
    masterURL: https://127.0.0.1:8443
