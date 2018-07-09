@@ -1,0 +1,18 @@
+--- a/master-config.yaml
++++ b/master-config.yaml
+@@ -170,11 +170,12 @@ oauthConfig:
+   identityProviders:
+   - challenge: true
+     login: true
+-    mappingMethod: claim
+-    name: anypassword
++    mappingMethod: add
++    name: httpasswd
+     provider:
+       apiVersion: v1
+-      kind: AllowAllPasswordIdentityProvider
++      kind: HTPasswdPasswordIdentityProvider
++      file: users.htpasswd
+   masterCA: ca-bundle.crt
+   masterPublicURL: https://127.0.0.1:8443
+   masterURL: https://127.0.0.1:8443
