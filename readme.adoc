@@ -29,5 +29,24 @@ source 2_createSecurityGroup.sh
 
 ./3_createKeyPair.sh
 
+source 4_runInstances.sh
+
+If you wish to try the Minishift variant
+same steps as above but replace 
+                      --user-data file://./centosminisetup.txt \
+in 4_runInstances.sh
 
 source 4_runInstances.sh
+
+./minishift_install.sh
+
+source minishift_setup.sh
+
+./minishiftCreateEC2.sh
+
+source minishift_ocenv.sh
+
+minishift console
+
+./install_istio.sh
+

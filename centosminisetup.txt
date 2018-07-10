@@ -1,0 +1,15 @@
+#cloud-config
+runcmd:
+  - yum update -y
+  - yum upgrade -y
+  - yum install -y wget docker git httpd-tools patch
+  - mkdir -p /etc/rhsm/ca/
+  - touch /etc/rhsm/ca/redhat-uep.pem
+  - sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/16"' /etc/sysconfig/docker
+  - systemctl enable docker
+  - groupadd docker
+  - usermod -aG docker centos
+  - service docker start
+  - htpasswd -c -b /users.htpasswd admin adminpassword
+  - htpasswd -b /users.htpasswd developer devpassword
+  - touch /home/centos/done
