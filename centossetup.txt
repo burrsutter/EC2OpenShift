@@ -18,9 +18,9 @@ runcmd:
   - export PATH=$HOME/openshift-origin-server-v3.9.0-191fece-linux-64bit:$PATH
   - oc cluster up --routing-suffix=$(curl http://169.254.169.254/latest/meta-data/public-ipv4).nip.io --public-hostname=$(curl http://169.254.169.254/latest/meta-data/public-ipv4).nip.io
   - oc cluster down
-  - patch -i /patch.diff /var/lib/origin/openshift.local.config/master/master-config.yaml
-  - htpasswd -c -b /var/lib/origin/openshift.local.config/master/users.htpasswd admin adminpassword
-  - htpasswd -b /var/lib/origin/openshift.local.config/master/users.htpasswd developer devpassword
+  - # patch -i /patch.diff /var/lib/origin/openshift.local.config/master/master-config.yaml
+  - # htpasswd -c -b /var/lib/origin/openshift.local.config/master/users.htpasswd admin adminpassword
+  - # htpasswd -b /var/lib/origin/openshift.local.config/master/users.htpasswd developer devpassword
   - oc cluster up --use-existing-config=true
   - oc adm policy add-cluster-role-to-user cluster-admin admin --config /var/lib/origin/openshift.local.config/master/admin.kubeconfig
   - touch /home/centos/done

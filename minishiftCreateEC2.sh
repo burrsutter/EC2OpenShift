@@ -1,10 +1,10 @@
 #!/bin/bash
-minishift profile set ec2instance
+minishift profile set ec2instanceB
 # what memory and CPU will minishift pick?
 # minishift config set memory 14GB
 # minishift config set cpus 3
 minishift config set vm-driver generic
-minishift config set image-caching true
+# minishift config set image-caching true
 minishift addon enable admin-user
 minishift addon enable anyuid
 # minishift ip --set-static

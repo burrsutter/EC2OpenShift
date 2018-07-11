@@ -10,6 +10,6 @@ runcmd:
   - groupadd docker
   - usermod -aG docker centos
   - service docker start
-  - htpasswd -c -b /users.htpasswd admin adminpassword
-  - htpasswd -b /users.htpasswd developer devpassword
+  - htpasswd -c -b /var/lib/minishift/openshift.local.config/master/users.htpasswd admin adminpassword
+  - htpasswd -b /var/lib/minishift/openshift.local.config/master/users.htpasswd developer devpassword
   - touch /home/centos/done

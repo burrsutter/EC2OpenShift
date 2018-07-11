@@ -11,7 +11,7 @@ aws ec2 run-instances --no-dry-run \
                       --key-name devenv-key \
                       --block-device-mappings "DeviceName=/dev/sda1,Ebs={VolumeSize=250,VolumeType=gp2}" \
                       --associate-public-ip-address \
-                      --user-data file://./centosminisetup.txt \
+                      --user-data file://./centossetup.txt \
                       --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=fromCLI}]' \
                       --output json
 
