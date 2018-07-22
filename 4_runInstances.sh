@@ -8,7 +8,7 @@ aws ec2 run-instances --no-dry-run \
                       --security-group-ids $sgId \
                       --subnet-id $subnetId \
                       --count 1 \
-                      --key-name devenv-key \
+                      --key-name mykeyburr \
                       --block-device-mappings "DeviceName=/dev/sda1,Ebs={VolumeSize=250,VolumeType=gp2}" \
                       --associate-public-ip-address \
                       --user-data file://./centossetup.txt \
